@@ -28,7 +28,7 @@ public class NaverCrawBatch {
    
    // 초 분 시 일 월 주
    //@Scheduled(cron = "* * 1 * * *", zone = "Asia/Seoul")
-   @Scheduled(cron = "* 39 12 * * *", zone = "Asia/Seoul")
+   @Scheduled(cron = "* 0 0 1 * * *", zone = "Asia/Seoul")
    public void 네이버뉴스크롤링() {
       System.out.println("배치 프로그램 시작======================");
       List<NaverNews> naverNewsList = new ArrayList<>();

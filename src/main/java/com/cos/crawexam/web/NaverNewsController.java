@@ -2,6 +2,8 @@ package com.cos.crawexam.web;
 
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.cos.crawexam.domain.NaverNews;
@@ -9,6 +11,7 @@ import com.cos.crawexam.domain.NaverNewsRepository;
 
 import lombok.RequiredArgsConstructor;
 import reactor.core.publisher.Flux;
+import reactor.core.publisher.Mono;
 import reactor.core.scheduler.Schedulers;
 
 /*
@@ -33,5 +36,9 @@ public class NaverNewsController {
 		return naverNewsRepository.mFindAll()
 				.subscribeOn(Schedulers.boundedElastic());
 		}
+	@PostMapping("/naverNews")
+	public Mono<NaverNews> save(@RequestBody NaverNews naverNews){
+		return naverNewsRepository.save(naverNews);
+	}
 	}
 
